@@ -137,6 +137,7 @@ body {
   |============================
 */
 /* Logo */
+
 .logo-nav {
     display: flex;
 }
@@ -172,9 +173,20 @@ body {
     color: var(--primary-text-color);
 }
 
-.site-nav .link.current {
-    color: var(--accent-color);
-    border-bottom: 2px solid var(--accent-color);
+.nav-item {
+    position: relative;
+}
+
+.site-nav .link.current::after {
+    display: block;
+    content: '';
+    background-color: var(--accent-color);
+    border-radius: 2px;
+    width: 100%;
+    height: 4px;
+    position: absolute;
+    /* top: 100%; */
+    bottom: -1px;
 }
 
 /* NAV-ITEM margin */
@@ -561,7 +573,7 @@ body {
 .button-nav:focus {
     background-color: var(--button-click-color);
     border: var(--button-click-color);
-    color: var(--button-text-color);
+    color: var(--white-text-color);
     box-shadow: 0px 3px 1px rgba(0, 0, 0, 0.1),
         0px 2px 1px rgba(0, 0, 0, 0.08),
         0px 2px 2px rgba(0, 0, 0, 0.12);
@@ -578,12 +590,42 @@ body {
 .list-choice {
     display: flex;
     flex-wrap: wrap;
+    gap: 48px 24px;
+}
+
+.choice-box {
+    position: relative;
+
+}
+
+.opacity-card {
+    width: 100%;
+    height: 100%;
+    padding-top: 40px;
+    padding-left: 32px;
+
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    background-color: var(--accent-color);
+    opacity: 0;
+}
+
+.opacity-card:hover {
+    opacity: 1;
+}
+
+.opacity-descript {
+    font-weight: 400px;
+    font-size: 16px;
+    line-height: calc(24 / 16);
+    letter-spacing: 0, 02em;
+    width: 296px;
+
+    color: var(--logo-text-color);
 }
 
 .choice-card {
-    width: 360px;
-    margin-right: 24px;
-    margin-bottom: 48px;
     box-shadow: 0px 1px 6px 0px rgba(46, 47, 66, 0.08);
 }
 
@@ -597,11 +639,12 @@ body {
 }
 
 .card-descript {
-    border: 1px solid #E7E9FC;
-    border-top: none;
+
     padding-top: 32px;
     padding-bottom: 32px;
     padding-left: 16px;
+    border: 1px solid #E7E9FC;
+    border-top: none;
 
     background-color: var(--bgc-white);
 }
